@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg: #ffffff;
   --bg-darker: #f3f4f6;
@@ -102,10 +106,7 @@ nav li {
   font-size: 1.2rem
 }
 
-/* par défaut on cache le menu mobile pour éviter qu'il s'affiche aussi sur grand écran */
-.mobile-menu {
-  display: none
-}
+
 
 /* Hero */
 .hero {
@@ -249,12 +250,14 @@ footer {
   }
 
   .mobile-menu {
-    display: none
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
   }
 
   .mobile-menu.open {
-    display: block;
-    padding: 1rem 0
+    max-height: 500px; /* arbitrary large value */
+    padding: 1rem 0;
   }
 }
 
