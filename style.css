@@ -1,9 +1,11 @@
 :root {
   --bg: #ffffff;
   --muted: #6b7280;
-  --accent: #d97706;
+  --accent: #00a4bf;
+  --accent-2: #ce3a50;
+  /* --accent: #d97706; */
   /* warm orange */
-  --accent-2: #8b5cf6;
+  /* --accent-2: #8b5cf6; */
   /* purple for contrast */
   --radius: 12px;
   --max-width: 1100px;
@@ -52,15 +54,7 @@ header {
 }
 
 .logo {
-  width: 48px;
-  height: 48px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: white;
-  font-weight: 800
+  margin-right: 1rem;
 }
 
 nav ul {
@@ -136,7 +130,7 @@ p.lead {
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  background: var(--accent);
   color: white
 }
 
@@ -263,7 +257,7 @@ footer {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background: var(--accent);
   transition: transform .25s ease
 }
 
