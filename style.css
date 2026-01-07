@@ -241,6 +241,10 @@ footer {
   .menu-btn {
     display: none
   }
+
+  .mobile-menu {
+    display: none;
+  }
 }
 
 @media (max-width:799px) {
