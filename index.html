@@ -25,7 +25,7 @@
         </div>
       </div>
 
-      <nav style="display:flex;align-items:center;gap:1rem">
+      <nav class="main-nav">
         <!-- language toggle -->
         <div id="langSwitch" class="lang-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Changer de langue">
           <span class="lang-label left">FR</span>
@@ -44,11 +44,11 @@
     </div>
 
     <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-      <ul style="list-style:none;margin:0;padding:0">
-        <li style="padding:.5rem 0"><a href="#apropos" data-i18n="nav_about">À propos</a></li>
-        <li style="padding:.5rem 0"><a href="#evenements" data-i18n="nav_events">Événements</a></li>
-        <li style="padding:.5rem 0"><a href="#adhesion" data-i18n="nav_membership">Adhésion</a></li>
-        <li style="padding:.5rem 0"><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      <ul>
+        <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
+        <li><a href="#evenements" data-i18n="nav_events">Événements</a></li>
+        <li><a href="#adhesion" data-i18n="nav_membership">Adhésion</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
     </div>
   </header>
@@ -312,6 +312,15 @@
 
     toggle.addEventListener('click', toggleLang);
     toggle.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' ') toggleLang(); });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuBtn.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen);
+      mobileMenu.setAttribute('aria-hidden', !isOpen);
+    });
   </script>
 </body>
 </html>
