@@ -23,9 +23,43 @@ html {
 
 body {
   margin: 0;
+  line-height: 1.5
+}
+
+.banner {
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(foto_carnaval.jpg);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
+}
+
+.banner .brand div, .banner .hero .eyebrow, .banner .hero p.lead, .banner .hero .small, .banner .hero h1 {
+  color: white !important;
+}
+
+.banner .btn-ghost {
+  border-color: white;
+  color: white;
+}
+
+.banner .hero .card {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+}
+
+.banner .hero .card h3 {
+  color: white;
+}
+
+.banner .desktop-menu a {
+  color: white;
+}
+
+.content-wrapper {
   background: linear-gradient(180deg, #fff 0%, #fbfbff 100%);
   color: #111;
-  line-height: 1.5
 }
 
 a {
@@ -42,7 +76,6 @@ a {
 /* Header */
 header {
   background: transparent;
-  padding: 0.6rem 0
 }
 
 .nav {
@@ -51,7 +84,6 @@ header {
   justify-content: space-between;
   gap: 1rem
 }
-
 .brand {
   display: flex;
   align-items: center;
@@ -117,7 +149,6 @@ nav li {
   grid-template-columns: 1fr;
   gap: 1rem;
   align-items: center;
-  padding: 2.4rem 0
 }
 
 .hero-inner {
@@ -171,7 +202,6 @@ p.lead {
 
 /* Sections */
 section {
-  padding: 2rem 0
 }
 
 .card-grid {

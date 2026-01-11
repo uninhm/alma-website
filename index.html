@@ -13,76 +13,80 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="container">
-    <div class="nav" role="navigation" aria-label="Navigation principale">
-      <div class="brand">
-        <div class="logo" aria-hidden="true">
-          <img src="logo_alma.svg" alt="Logo" height="50">
+  <div class="banner">
+    <header class="container">
+      <div class="nav" role="navigation" aria-label="Navigation principale">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <img src="logo_alma.svg" alt="Logo" height="50">
+          </div>
+          <div>
+            <div style="font-weight:800">ALMA</div>
+            <div class="small" data-i18n="subtitle">Association Latino‑américaine d'Albi</div>
+          </div>
         </div>
-        <div>
-          <div style="font-weight:800">ALMA</div>
-          <div class="small" data-i18n="subtitle">Association Latino‑américaine d'Albi</div>
-        </div>
+
+        <nav class="main-nav">
+          <!-- language toggle -->
+          <div id="langSwitch" class="lang-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Changer de langue">
+            <span class="lang-label left">FR</span>
+            <span class="lang-label right">ES</span>
+            <span class="lang-thumb"></span>
+          </div>
+
+          <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+          <ul class="desktop-menu">
+            <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
+            <li><a href="#evenements" data-i18n="nav_events">Événements</a></li>
+            <li><a href="#adhesion" data-i18n="nav_membership">Adhésion</a></li>
+            <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+          </ul>
+        </nav>
       </div>
 
-      <nav class="main-nav">
-        <!-- language toggle -->
-        <div id="langSwitch" class="lang-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Changer de langue">
-          <span class="lang-label left">FR</span>
-          <span class="lang-label right">ES</span>
-          <span class="lang-thumb"></span>
-        </div>
-
-        <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">☰</button>
-        <ul class="desktop-menu">
+      <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+        <ul>
           <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
           <li><a href="#evenements" data-i18n="nav_events">Événements</a></li>
           <li><a href="#adhesion" data-i18n="nav_membership">Adhésion</a></li>
           <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
-      </nav>
-    </div>
-
-    <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-      <ul>
-        <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
-        <li><a href="#evenements" data-i18n="nav_events">Événements</a></li>
-        <li><a href="#adhesion" data-i18n="nav_membership">Adhésion</a></li>
-        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="eyebrow" data-i18n="eyebrow">Culture • Rencontres • Solidarité</div>
-        <h1 id="hero-title" data-i18n="title">ALMA — communauté latino‑américaine à Albi</h1>
-        <p class="lead" data-i18n="lead">Promouvoir les échanges culturels, organiser des événements et accompagner les personnes d'origine latino‑américaine (ou pas) à Albi et ses environs.</p>
-
-        <div class="ctas" role="group">
-          <a class="btn btn-primary" href="#adhesion" data-i18n="cta_join">Adhérer</a>
-          <a class="btn btn-ghost" href="#evenements" data-i18n="cta_events">Voir les événements</a>
-        </div>
       </div>
+    </header>
 
-      <aside class="card">
-        <h3 data-i18n="activities_title">Nos activités</h3>
-        <ul class="small" style="padding-left:1rem">
-          <li data-i18n="act1">Cours de langue</li>
-          <li data-i18n="act2">Soirées culturelles</li>
-          <li data-i18n="act3">Aide administrative et orientation</li>
-          <li data-i18n="act4">Échanges interculturels</li>
-        </ul>
-      </aside>
-    </section>
+    <main class="container">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-inner">
+          <div class="eyebrow" data-i18n="eyebrow">Culture • Rencontres • Solidarité</div>
+          <h1 id="hero-title" data-i18n="title">ALMA — communauté latino‑américaine à Albi</h1>
+          <p class="lead" data-i18n="lead">Promouvoir les échanges culturels, organiser des événements et accompagner les personnes d'origine latino‑américaine (ou pas) à Albi et ses environs.</p>
 
-    <section id="apropos">
+          <div class="ctas" role="group">
+            <a class="btn btn-primary" href="#adhesion" data-i18n="cta_join">Adhérer</a>
+            <a class="btn btn-ghost" href="#evenements" data-i18n="cta_events">Voir les événements</a>
+          </div>
+        </div>
+
+        <aside class="card">
+          <h3 data-i18n="activities_title">Nos activités</h3>
+          <ul class="small" style="padding-left:1rem">
+            <li data-i18n="act1">Cours de langue</li>
+            <li data-i18n="act2">Soirées culturelles</li>
+            <li data-i18n="act3">Aide administrative et orientation</li>
+            <li data-i18n="act4">Échanges interculturels</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="content-wrapper">
+    <section id="apropos" class="container">
       <h2 data-i18n="about_title">À propos</h2>
       <p class="small" data-i18n="about_text">ALMA est une association locale fondée par des membres de la communauté latino‑américaine et des alliés.</p>
     </section>
 
-    <section id="evenements">
+    <section id="evenements" class="container">
       <h2 data-i18n="events_title">Événements & activités</h2>
       <div class="card-grid">
         <article class="card">
@@ -101,7 +105,7 @@
       </div>
     </section>
 
-    <section id="adhesion">
+    <section id="adhesion" class="container">
       <h2 data-i18n="membership_title">Adhésion</h2>
       <p class="small" data-i18n="membership_text">Envie de nous rejoindre ? Votre adhésion nous permet de soutenir nos actions et de développer nos projets. Le montant de l'adhésion annuelle est de 5 €.</p>
       <div style="margin-top:1rem" class="card-grid">
@@ -120,7 +124,7 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="container">
       <h2 data-i18n="contact_title">Contact</h2>
 
       <div class="card">
@@ -159,11 +163,10 @@
         </div>
       </div>
     </section>
-  </main>
-
-  <footer class="container">
-    <div class="small">© ALMA — Association Latino‑américaine d'Albi</div>
-  </footer>
+    <footer class="container">
+      <div class="small">© ALMA — Association Latino‑américaine d'Albi</div>
+    </footer>
+  </div>
 
   <script>
     const translations = {
