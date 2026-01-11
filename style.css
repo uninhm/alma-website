@@ -184,7 +184,9 @@ section {
   background: white;
   border-radius: var(--radius);
   padding: 1rem;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06)
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  display: flex; /* Make card a flex container */
+  flex-direction: column; /* Stack children vertically */
 }
 
 .small {
@@ -324,4 +326,31 @@ footer {
   background: #f3f4f6;
   border-radius: 999px;
   font-weight: 600
+}
+
+/* New styles for card with image */
+.card .card-content {
+  display: flex;
+  gap: 1rem;
+  align-items: stretch; /* Make children stretch to fill container height */
+  height: 100%; /* Ensure card-content takes full height of the card */
+}
+
+.card .card-body {
+  flex-grow: 1;
+}
+
+.card .card-image {
+  width: 50%;
+}
+
+/* Responsive adjustments for card with image */
+@media (max-width: 600px) {
+  .card .card-content {
+    flex-direction: column;
+  }
+  .card .card-image {
+    width: 100%; /* Full width on small screens */
+    height: auto; /* Allow height to adjust naturally on small screens */
+  }
 }
