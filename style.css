@@ -344,6 +344,7 @@ footer {
 
   .card-with-image-grid .card-body {
     padding: 1rem; /* Keep padding for the text content */
+    padding-left: 0;
     display: flex; /* Make it a flex container */
     flex-direction: column; /* Stack content vertically */
     justify-content: center; /* Center content vertically */
@@ -360,6 +361,10 @@ footer {
     height: 100%;
     object-fit: cover;
     border-radius: 0 var(--radius) var(--radius) 0; /* Rounded corners on the right side */
+  }
+
+  .card {
+    padding-left: 2rem;
   }
 }
 
