@@ -37,6 +37,7 @@
         <ul class="desktop-menu">
           <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
           <li><a href="#evenements" data-i18n="nav_events">Événements</a></li>
+          <li><a href="#articles" data-i18n="nav_articles">Articles</a></li>
           <li><a href="#adhesion" data-i18n="nav_membership">Adhésion</a></li>
           <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
@@ -47,6 +48,7 @@
       <ul>
         <li><a href="#apropos" data-i18n="nav_about">À propos</a></li>
         <li><a href="#evenements" data-i18n="nav_events">Événements</a></li>
+        <li><a href="#articles" data-i18n="nav_articles">Articles</a></li>
         <li><a href="#adhesion" data-i18n="nav_membership">Adhésion</a></li>
         <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
       </ul>
@@ -105,6 +107,27 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <section id="articles">
+      <h2 data-i18n="articles_title">Articles & Informations</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3 data-i18n="art_admin_title">Démarches administratives</h3>
+          <p class="small" data-i18n="art_admin_desc">Informations sur les premiers pas à Albi et les documents nécessaires.</p>
+          <a href="articles/index.html" class="btn btn-ghost" style="margin-top:auto" data-i18n="art_read_more">Lire plus</a>
+        </div>
+        <div class="card">
+          <h3 data-i18n="art_housing_title">Logement</h3>
+          <p class="small" data-i18n="art_housing_desc">Comment trouver un logement à Albi et quelles sont les aides disponibles.</p>
+          <a href="articles/index.html" class="btn btn-ghost" style="margin-top:auto" data-i18n="art_read_more">Lire plus</a>
+        </div>
+        <div class="card">
+          <h3 data-i18n="art_health_title">Santé</h3>
+          <p class="small" data-i18n="art_health_desc">Accès aux soins, assurance maladie et numéros d'urgence.</p>
+          <a href="articles/index.html" class="btn btn-ghost" style="margin-top:auto" data-i18n="art_read_more">Lire plus</a>
+        </div>
       </div>
     </section>
 
@@ -178,6 +201,7 @@
         subtitle: "Association Latino‑américaine d'Albi",
         nav_about: "À propos",
         nav_events: "Événements",
+        nav_articles: "Articles",
         nav_membership: "Adhésion",
         nav_contact: "Contact",
         eyebrow: "Culture • Rencontres • Solidarité",
@@ -202,6 +226,14 @@
         permanence_date: "<strong>Date :</strong> Tous les vendredis hors vacances scolaires",
         permanence_time: "<strong>Heure :</strong> 14h - 18h",
         permanence_location: "<strong>Lieu :</strong> Maison de quartier Patus Cremat",
+        articles_title: "Articles & Informations",
+        art_admin_title: "Démarches administratives",
+        art_admin_desc: "Informations sur les premiers pas à Albi et les documents nécessaires.",
+        art_housing_title: "Logement",
+        art_housing_desc: "Comment trouver un logement à Albi et quelles sont les aides disponibles.",
+        art_health_title: "Santé",
+        art_health_desc: "Accès aux soins, assurance maladie et numéros d'urgence.",
+        art_read_more: "Lire plus",
         membership_title: "Adhésion",
         membership_text: "Envie de nous rejoindre ? Votre adhésion nous permet de soutenir nos actions et de développer nos projets. Le montant de l'adhésion annuelle est de 5 €.",
         how_to_join_title: "Comment adhérer",
@@ -226,6 +258,7 @@
         subtitle: "Asociación Latinoamericana de Albi",
         nav_about: "Sobre nosotros",
         nav_events: "Eventos",
+        nav_articles: "Artículos",
         nav_membership: "Afiliación",
         nav_contact: "Contacto",
         eyebrow: "Cultura • Encuentros • Solidaridad",
@@ -250,6 +283,14 @@
         permanence_date: "<strong>Fecha:</strong> Todos los viernes excepto durante las vacaciones escolares",
         permanence_time: "<strong>Hora:</strong> 14h - 18h",
         permanence_location: "<strong>Lugar:</strong> Maison de quartier Patus Cremat",
+        articles_title: "Artículos e Información",
+        art_admin_title: "Trámites administrativos",
+        art_admin_desc: "Información sobre los primeros pasos en Albi y los documentos necesarios.",
+        art_housing_title: "Vivienda",
+        art_housing_desc: "Cómo encontrar alojamiento en Albi y qué ayudas están disponibles.",
+        art_health_title: "Salud",
+        art_health_desc: "Acceso a la atención médica, seguro de salud y números de emergencia.",
+        art_read_more: "Leer más",
         membership_title: "Afiliación",
         membership_text: "¿Quiere unirse a nosotros? Su membresía nos permite apoyar nuestras acciones y desarrollar nuestros proyectos. La cuota anual de membresía es de 5 €.",
         how_to_join_title: "Cómo afiliarse",
@@ -296,6 +337,19 @@
       }
       toggle.classList.toggle('es', lang === 'es');
       toggle.setAttribute('aria-checked', lang === 'es');
+
+      // Update links to include lang param
+      document.querySelectorAll('a').forEach(a => {
+          if (a.hostname === window.location.hostname) {
+              try {
+                  const url = new URL(a.href);
+                  url.searchParams.set('lang', lang);
+                  a.href = url.toString();
+              } catch (e) {
+                  // Ignore invalid URLs
+              }
+          }
+      });
     }
 
     function toggleLang(){
