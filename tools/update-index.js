@@ -72,6 +72,10 @@ function updateIndex() {
         Object.assign(currentTrans.fr, indexTranslationsFr);
         Object.assign(currentTrans.es, indexTranslationsEs);
         
+        // Add "more articles soon" translations
+        currentTrans.fr.more_articles_soon = "Plus d'articles prochainement...";
+        currentTrans.es.more_articles_soon = "Más artículos próximamente...";
+        
         const newTransStr = JSON.stringify(currentTrans, null, 2);
         indexContent = indexContent.replace(/const translations = ({[\s\S]+?});/, `const translations = ${newTransStr};`);
     }

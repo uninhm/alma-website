@@ -180,6 +180,22 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr))
 }
 
+.card-grid-articles {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .card-grid-articles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .card-grid-articles {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .card {
   background: white;
   border-radius: var(--radius);
