@@ -353,11 +353,11 @@
         
         // Generate content HTML
         const generateContent = (lang) => {
-            let html = `<p data-i18n="article_intro">${data[lang].intro}</p>`;
+            let html = `<div data-i18n="article_intro">${data[lang].intro}</div>`;
             data[lang].sections.forEach((s, i) => {
                 html += `
       <h2 data-i18n="section_title_${i}">${s.title}</h2>
-      <p data-i18n="section_text_${i}">${s.text}</p>`;
+      <div data-i18n="section_text_${i}">${s.text}</div>`;
             });
             
             if (data[lang].links.length > 0) {
@@ -375,7 +375,7 @@
             }
 
             html += `
-      <p data-i18n="article_conclusion">${data[lang].conclusion}</p>`;
+      <div data-i18n="article_conclusion">${data[lang].conclusion}</div>`;
             return html;
         };
 

@@ -3,6 +3,7 @@ const path = require('path');
 
 const articlesDir = path.join(__dirname, '../articles');
 const indexFile = path.join(articlesDir, 'index.html');
+const templateFile = path.join(articlesDir, 'index-template.html');
 
 // Helper to extract translations from an article file
 function extractTranslations(filePath) {
@@ -10,7 +11,8 @@ function extractTranslations(filePath) {
     const match = content.match(/const translations = ({[\s\S]+?});/);
     if (match) {
         try {
-            return JSON.parse(match[1]);
+            // Use eval instead of JSON.parse because the object in HTML might not be strict JSON
+            return eval('(' + match[1] + ')');
         } catch (e) {
             console.error(`Error parsing translations in ${filePath}:`, e);
         }
@@ -18,9 +20,14 @@ function extractTranslations(filePath) {
     return null;
 }
 
+// Helper to keep full HTML for descriptions
+function fullDesc(html) {
+    return html || '';
+}
+
 function updateIndex() {
     const files = fs.readdirSync(articlesDir)
-        .filter(f => f.endsWith('.html') && f !== 'index.html' && f !== 'template.html');
+        .filter(f => f.endsWith('.html') && f !== 'index.html' && f !== 'template.html' && f !== 'index-template.html');
 
     const articles = files.map(f => {
         const trans = extractTranslations(path.join(articlesDir, f));
@@ -30,52 +37,47 @@ function updateIndex() {
         };
     }).filter(a => a.translations);
 
-    // Sort by date if possible (optional)
-    
     // Generate the card-grid HTML
     let gridHtml = '';
-    const indexTranslations = {
-        fr: {},
-        es: {}
-    };
+    const indexTranslationsFr = {};
+    const indexTranslationsEs = {};
 
     articles.forEach((art, index) => {
         const id = `art_${index}`;
         gridHtml += `
         <div class="card">
           <h3 data-i18n="${id}_title">${art.translations.fr.article_title}</h3>
-          <p class="small" data-i18n="${id}_desc">${art.translations.fr.article_intro.substring(0, 100)}...</p>
+          <div class="small" data-i18n="${id}_desc">${fullDesc(art.translations.fr.article_intro)}</div>
           <a href="${art.filename}" class="btn btn-ghost" style="margin-top:auto" data-i18n="art_read_more">Lire plus</a>
         </div>`;
         
-        indexTranslations.fr[`${id}_title`] = art.translations.fr.article_title;
-        indexTranslations.fr[`${id}_desc`] = art.translations.fr.article_intro.substring(0, 100) + '...';
-        indexTranslations.es[`${id}_title`] = art.translations.es.article_title;
-        indexTranslations.es[`${id}_desc`] = art.translations.es.article_intro.substring(0, 100) + '...';
+        indexTranslationsFr[`${id}_title`] = art.translations.fr.article_title;
+        indexTranslationsFr[`${id}_desc`] = fullDesc(art.translations.fr.article_intro);
+        indexTranslationsEs[`${id}_title`] = art.translations.es.article_title;
+        indexTranslationsEs[`${id}_desc`] = fullDesc(art.translations.es.article_intro);
     });
 
-    // Read original index.html to keep the structure
-    let indexContent = fs.readFileSync(indexFile, 'utf8');
+    // Read from template
+    let indexContent = fs.readFileSync(templateFile, 'utf8');
 
     // Update the card-grid
-    const gridRegex = /<div class="card-grid" style="margin-top: 2rem;">[\s\S]+?<\/div>/;
-    indexContent = indexContent.replace(gridRegex, `<div class="card-grid" style="margin-top: 2rem;">${gridHtml}\n      </div>`);
+    indexContent = indexContent.replace('<!-- ARTICLES_PLACEHOLDER -->', gridHtml);
 
-    // Update translations object in index.html
+    // Update translations object
     const transMatch = indexContent.match(/const translations = ({[\s\S]+?});/);
     if (transMatch) {
         const currentTrans = eval('(' + transMatch[1] + ')');
         
         // Merge new article translations
-        Object.assign(currentTrans.fr, indexTranslations.fr);
-        Object.assign(currentTrans.es, indexTranslations.es);
+        Object.assign(currentTrans.fr, indexTranslationsFr);
+        Object.assign(currentTrans.es, indexTranslationsEs);
         
         const newTransStr = JSON.stringify(currentTrans, null, 2);
         indexContent = indexContent.replace(/const translations = ({[\s\S]+?});/, `const translations = ${newTransStr};`);
     }
 
     fs.writeFileSync(indexFile, indexContent);
-    console.log(`Successfully updated ${indexFile} with ${articles.length} articles.`);
+    console.log(`Successfully updated ${indexFile} from template with ${articles.length} articles.`);
 }
 
 updateIndex();
