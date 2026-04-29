@@ -2,8 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const articlesDir = path.join(__dirname, '../articles');
+const rootDir = path.join(__dirname, '..');
 const indexFile = path.join(articlesDir, 'index.html');
 const templateFile = path.join(articlesDir, 'index-template.html');
+const rootIndexFile = path.join(rootDir, 'index.html');
 
 // Helper to extract translations from an article file
 function extractTranslations(filePath) {
@@ -37,51 +39,79 @@ function updateIndex() {
         };
     }).filter(a => a.translations);
 
-    // Generate the card-grid HTML
-    let gridHtml = '';
+    // Generate translations object parts
     const indexTranslationsFr = {};
     const indexTranslationsEs = {};
 
     articles.forEach((art, index) => {
         const id = `art_${index}`;
-        gridHtml += `
-        <div class="card">
-          <h3 data-i18n="${id}_title">${art.translations.fr.article_title}</h3>
-          <div class="small" data-i18n="${id}_desc">${fullDesc(art.translations.fr.article_intro)}</div>
-          <a href="${art.filename}" class="btn btn-ghost" style="margin-top:auto" data-i18n="art_read_more">Lire plus</a>
-        </div>`;
-        
         indexTranslationsFr[`${id}_title`] = art.translations.fr.article_title;
         indexTranslationsFr[`${id}_desc`] = fullDesc(art.translations.fr.article_intro);
         indexTranslationsEs[`${id}_title`] = art.translations.es.article_title;
         indexTranslationsEs[`${id}_desc`] = fullDesc(art.translations.es.article_intro);
     });
 
-    // Read from template
-    let indexContent = fs.readFileSync(templateFile, 'utf8');
+    // --- Update articles/index.html ---
+    let articlesGridHtml = '';
+    articles.forEach((art, index) => {
+        const id = `art_${index}`;
+        articlesGridHtml += `
+        <div class="card">
+          <h3 data-i18n="${id}_title">${art.translations.fr.article_title}</h3>
+          <div class="small" data-i18n="${id}_desc">${fullDesc(art.translations.fr.article_intro)}</div>
+          <a href="${art.filename}" class="btn btn-ghost" style="margin-top:auto" data-i18n="art_read_more">Lire plus</a>
+        </div>`;
+    });
 
-    // Update the card-grid
-    indexContent = indexContent.replace('<!-- ARTICLES_PLACEHOLDER -->', gridHtml);
+    let articlesIndexContent = fs.readFileSync(templateFile, 'utf8');
+    articlesIndexContent = articlesIndexContent.replace('<!-- ARTICLES_PLACEHOLDER -->', articlesGridHtml);
 
-    // Update translations object
-    const transMatch = indexContent.match(/const translations = ({[\s\S]+?});/);
-    if (transMatch) {
-        const currentTrans = eval('(' + transMatch[1] + ')');
-        
-        // Merge new article translations
+    const artTransMatch = articlesIndexContent.match(/const translations = ({[\s\S]+?});/);
+    if (artTransMatch) {
+        const currentTrans = eval('(' + artTransMatch[1] + ')');
         Object.assign(currentTrans.fr, indexTranslationsFr);
         Object.assign(currentTrans.es, indexTranslationsEs);
-        
-        // Add "more articles soon" translations
         currentTrans.fr.more_articles_soon = "Plus d'articles prochainement...";
         currentTrans.es.more_articles_soon = "Más artículos próximamente...";
-        
         const newTransStr = JSON.stringify(currentTrans, null, 2);
-        indexContent = indexContent.replace(/const translations = ({[\s\S]+?});/, `const translations = ${newTransStr};`);
+        articlesIndexContent = articlesIndexContent.replace(/const translations = ({[\s\S]+?});/, `const translations = ${newTransStr};`);
     }
+    fs.writeFileSync(indexFile, articlesIndexContent);
+    console.log(`Successfully updated ${indexFile}`);
 
-    fs.writeFileSync(indexFile, indexContent);
-    console.log(`Successfully updated ${indexFile} from template with ${articles.length} articles.`);
+
+    // --- Update root index.html ---
+    let rootGridHtml = '';
+    articles.forEach((art, index) => {
+        const id = `art_${index}`;
+        rootGridHtml += `
+        <div class="card">
+          <h3 data-i18n="${id}_title">${art.translations.fr.article_title}</h3>
+          <div class="small" data-i18n="${id}_desc">${fullDesc(art.translations.fr.article_intro)}</div>
+          <a href="articles/${art.filename}" class="btn btn-ghost" style="margin-top:auto" data-i18n="art_read_more">Lire plus</a>
+        </div>`;
+    });
+
+    let rootIndexContent = fs.readFileSync(rootIndexFile, 'utf8');
+    const rootGridRegex = /<!-- ARTICLES_START -->[\s\S]*?<!-- ARTICLES_END -->/;
+    rootIndexContent = rootIndexContent.replace(rootGridRegex, `<!-- ARTICLES_START -->${rootGridHtml}\n        <!-- ARTICLES_END -->`);
+
+    const rootTransMatch = rootIndexContent.match(/const translations = ({[\s\S]+?});/);
+    if (rootTransMatch) {
+        const currentTrans = eval('(' + rootTransMatch[1] + ')');
+        Object.assign(currentTrans.fr, indexTranslationsFr);
+        Object.assign(currentTrans.es, indexTranslationsEs);
+        currentTrans.fr.more_articles_soon = "Plus d'articles prochainement...";
+        currentTrans.es.more_articles_soon = "Más artículos próximamente...";
+        currentTrans.fr.all_articles = "Voir tous les articles";
+        currentTrans.es.all_articles = "Ver todos los artículos";
+        const newTransStr = JSON.stringify(currentTrans, null, 2);
+        rootIndexContent = rootIndexContent.replace(/const translations = ({[\s\S]+?});/, `const translations = ${newTransStr};`);
+    }
+    fs.writeFileSync(rootIndexFile, rootIndexContent);
+    console.log(`Successfully updated ${rootIndexFile}`);
+
+    console.log(`Processed ${articles.length} articles.`);
 }
 
 updateIndex();
