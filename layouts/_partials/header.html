@@ -1,0 +1,102 @@
+<header class="container">
+  <div class="nav" role="navigation" aria-label="Navigation principale">
+    <a class="brand" href="{{ absURL "" }}">
+      <div class="logo" aria-hidden="true">
+        <img src="{{ absURL "resources/logo_alma.svg" }}" alt="Logo" height="50">
+      </div>
+      <div>
+        <div style="font-weight:800; color: black">ALMA</div>
+        <div class="small">{{ i18n "site_subtitle" }}</div>
+      </div>
+    </a>
+
+    <nav class="main-nav">
+      <!-- language toggle -->
+      <div id="langSwitch" class="lang-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Changer de langue">
+        <span class="lang-label left">FR</span>
+        <span class="lang-label right">ES</span>
+        <span class="lang-thumb"></span>
+      </div>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" onclick="mobileMenuToggle()">☰</button>
+      <ul class="desktop-menu">
+        <li><a href="{{ absLangURL "#apropos" }}">{{ i18n "nav_about" }}</a></li>
+        <li><a href="{{ absLangURL "#evenements" }}">{{ i18n "nav_events" }}</a></li>
+        <li><a href="{{ absLangURL "articles" }}">{{ i18n "nav_articles" }}</a></li>
+        <li><a href="{{ absLangURL "#adhesion" }}">{{ i18n "nav_membership" }}</a></li>
+        <li><a href="{{ absLangURL "#contact" }}">{{ i18n "nav_contact" }}</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <ul>
+      <li><a href="{{ absLangURL "#apropos" }}">{{ i18n "nav_about" }}</a></li>
+      <li><a href="{{ absLangURL "#evenements" }}">{{ i18n "nav_events" }}</a></li>
+      <li><a href="{{ absLangURL "articles" }}">{{ i18n "nav_articles" }}</a></li>
+      <li><a href="{{ absLangURL "#adhesion" }}">{{ i18n "nav_membership" }}</a></li>
+      <li><a href="{{ absLangURL "#contact" }}">{{ i18n "nav_contact" }}</a></li>
+    </ul>
+  </div>
+
+  <script>
+    const langSwitch = document.getElementById('langSwitch');
+
+    let currentLang = document.documentElement.lang;
+
+    langSwitch.classList.toggle('es', currentLang === 'es');
+    langSwitch.setAttribute('aria-checked', currentLang === 'es');
+
+    langSwitch.addEventListener('click', () => {
+      // get current language for url site.com/lang
+      if (currentLang === 'fr') {
+        currentLang = 'es';
+      } else {
+        currentLang = 'fr';
+      }
+      window.location.href = `{{ absURL "" }}/${currentLang}`;
+    });
+  </script>
+
+</header>
+
+<!-- <header class="container"> -->
+<!-- <div class="nav" role="navigation" aria-label="Navigation principale"> -->
+  <!-- <div class="brand"> -->
+    <!-- <div class="logo" aria-hidden="true"> -->
+      <!-- <img src="{{ .Site.BaseURL }}resources/logo_alma.svg" alt="Logo" height="50"> -->
+    <!-- </div> -->
+    <!-- <div> -->
+      <!-- <div style="font-weight:800">ALMA</div> -->
+      <!-- <div class="small" data-i18n="subtitle">{{ i18n "site_subtitle" }}</div> -->
+    <!-- </div> -->
+  <!-- </div> -->
+
+  <!-- <nav class="main-nav"> -->
+    <!-- language toggle -->
+    <!-- <div id="langSwitch" class="lang-switch" role="switch" aria-checked="false" tabindex="0" aria-label="Changer de langue"> -->
+      <!-- <span class="lang-label left">FR</span> -->
+      <!-- <span class="lang-label right">ES</span> -->
+      <!-- <span class="lang-thumb"></span> -->
+    <!-- </div> -->
+
+    <!-- <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu">☰</button> -->
+    <!-- <ul class="desktop-menu"> -->
+      <!-- <li><a href="#apropos">{{ i18n "nav_about" }}</a></li> -->
+      <!-- <li><a href="#evenements">{{ i18n "nav_events" }}</a></li> -->
+      <!-- <li><a href="#adhesion">{{ i18n "nav_membership" }}</a></li> -->
+      <!-- <li><a href="#contact">{{ i18n "nav_contact" }}</a></li> -->
+    <!-- </ul> -->
+  <!-- </nav> -->
+<!-- </div> -->
+
+<!-- <div id="mobileMenu" class="mobile-menu" aria-hidden="true"> -->
+  <!-- <ul> -->
+    <!-- <li><a href="#apropos">{{ i18n "nav_about" }}</a></li> -->
+    <!-- <li><a href="#evenements">{{ i18n "nav_events" }}</a></li> -->
+    <!-- <li><a href="#adhesion">{{ i18n "nav_membership" }}</a></li> -->
+    <!-- <li><a href="#contact">{{ i18n "nav_contact" }}</a></li> -->
+  <!-- </ul> -->
+<!-- </div> -->
+<!-- </header> -->
+

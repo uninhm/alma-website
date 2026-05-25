@@ -1,0 +1,18 @@
+baseURL = 'https://alma-albi.fr'
+title = "ALMA — Association Latino‑américaine d'Albi"
+defaultContentLanguage = "fr"
+defaultContentLanguageInSubdir = true
+
+[params]
+  description = "ALMA (Association Latino‑aMéricaine d'Albi) — événements, cours, rencontres et échanges culturels à Albi."
+
+[languages]
+  [languages.fr]
+    title = "ALMA — Association Latino‑américaine d'Albi"
+    languageName = "Français"
+    weight = 1
+
+  [languages.es]
+    title = "ALMA — Asociación Latinoamericana de Albi"
+    languageName = "Español"
+    weight = 2
