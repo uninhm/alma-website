@@ -264,6 +264,11 @@ footer {
   .mobile-menu {
     display: none;
   }
+
+  .page-content {
+    max-width: 75%;
+    margin:auto;
+  }
 }
 
 @media (max-width:799px) {
