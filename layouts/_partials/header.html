@@ -1,8 +1,8 @@
 <header class="container">
   <div class="nav" role="navigation" aria-label="Navigation principale">
-    <a class="brand" href="{{ absURL "" }}">
+    <a class="brand" href="{{ relURL "" }}">
       <div class="logo" aria-hidden="true">
-        <img src="{{ absURL "resources/logo_alma.svg" }}" alt="Logo" height="50">
+        <img src="{{ relURL "resources/logo_alma.svg" }}" alt="Logo" height="50">
       </div>
       <div>
         <div style="font-weight:800; color: black">ALMA</div>
@@ -21,7 +21,7 @@
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" onclick="mobileMenuToggle()">☰</button>
       <ul class="desktop-menu">
         {{ range site.Home.Params.menuSections }}
-          <li><a href="{{ absLangURL "" }}#{{ .id }}">{{ .title }}</a></li>
+          <li><a href="{{ relLangURL "" }}#{{ .id }}">{{ .title }}</a></li>
         {{ end }}
         {{ range site.Home.Sections }}
           <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
@@ -33,7 +33,7 @@
   <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
     <ul>
       {{ range site.Home.Params.menuSections }}
-        <li><a href="{{ absLangURL "" }}#{{ .id }}">{{ .title }}</a></li>
+        <li><a href="{{ relLangURL "" }}#{{ .id }}">{{ .title }}</a></li>
       {{ end }}
       {{ range site.Home.Sections }}
         <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
@@ -56,7 +56,7 @@
       } else {
         currentLang = 'fr';
       }
-      window.location.href = `{{ absURL "" }}/${currentLang}`;
+      window.location.href = `{{ relURL "" }}/${currentLang}`;
     });
   </script>
 
