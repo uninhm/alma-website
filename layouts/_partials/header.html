@@ -20,26 +20,24 @@
 
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" onclick="mobileMenuToggle()">☰</button>
       <ul class="desktop-menu">
-        <li><a href="{{ absLangURL "#apropos" }}">{{ i18n "nav_about" }}</a></li>
-        <li><a href="{{ absLangURL "#evenements" }}">{{ i18n "nav_events" }}</a></li>
+        {{ range site.Home.Params.menuSections }}
+          <li><a href="{{ absLangURL "" }}#{{ .id }}">{{ .title }}</a></li>
+        {{ end }}
         {{ range site.Home.Sections }}
           <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
         {{ end }}
-        <li><a href="{{ absLangURL "#adhesion" }}">{{ i18n "nav_membership" }}</a></li>
-        <li><a href="{{ absLangURL "#contact" }}">{{ i18n "nav_contact" }}</a></li>
       </ul>
     </nav>
   </div>
 
   <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
     <ul>
-      <li><a href="{{ absLangURL "#apropos" }}">{{ i18n "nav_about" }}</a></li>
-      <li><a href="{{ absLangURL "#evenements" }}">{{ i18n "nav_events" }}</a></li>
+      {{ range site.Home.Params.menuSections }}
+        <li><a href="{{ absLangURL "" }}#{{ .id }}">{{ .title }}</a></li>
+      {{ end }}
       {{ range site.Home.Sections }}
         <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
       {{ end }}
-      <li><a href="{{ absLangURL "#adhesion" }}">{{ i18n "nav_membership" }}</a></li>
-      <li><a href="{{ absLangURL "#contact" }}">{{ i18n "nav_contact" }}</a></li>
     </ul>
   </div>
 
