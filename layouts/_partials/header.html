@@ -22,7 +22,9 @@
       <ul class="desktop-menu">
         <li><a href="{{ absLangURL "#apropos" }}">{{ i18n "nav_about" }}</a></li>
         <li><a href="{{ absLangURL "#evenements" }}">{{ i18n "nav_events" }}</a></li>
-        <li><a href="{{ absLangURL "articles" }}">{{ i18n "nav_articles" }}</a></li>
+        {{ range site.Home.Sections }}
+          <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{ end }}
         <li><a href="{{ absLangURL "#adhesion" }}">{{ i18n "nav_membership" }}</a></li>
         <li><a href="{{ absLangURL "#contact" }}">{{ i18n "nav_contact" }}</a></li>
       </ul>
@@ -33,7 +35,9 @@
     <ul>
       <li><a href="{{ absLangURL "#apropos" }}">{{ i18n "nav_about" }}</a></li>
       <li><a href="{{ absLangURL "#evenements" }}">{{ i18n "nav_events" }}</a></li>
-      <li><a href="{{ absLangURL "articles" }}">{{ i18n "nav_articles" }}</a></li>
+      {{ range site.Home.Sections }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+      {{ end }}
       <li><a href="{{ absLangURL "#adhesion" }}">{{ i18n "nav_membership" }}</a></li>
       <li><a href="{{ absLangURL "#contact" }}">{{ i18n "nav_contact" }}</a></li>
     </ul>
