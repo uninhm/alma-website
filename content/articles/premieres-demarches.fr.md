@@ -41,7 +41,7 @@ Les documents les plus couramment acceptés sont :
 
 - Facture d'électricité ou de gaz (par exemple d' [EDF](https://www.edf.fr/))
 - Facture d'eau
-- Contrat de location ( _bail_)
+- Contrat de location (_bail_)
 - Quittance de loyer
 
 Si vous n'avez pas de logement à votre nom, vous pouvez présenter une **attestation d’hébergement**. Dans ce cas, vous devrez fournir :
@@ -102,7 +102,7 @@ S'il s'agit de votre **première déclaration**, vous devrez normalement la fair
 
 Le formulaire doit être envoyé à votre centre des finances publiques. Après cette première déclaration, l'administration vous attribuera un numéro fiscal, qui vous permettra d'effectuer les déclarations suivantes en ligne sur [impots.gouv](https://www.impots.gouv.fr/).
 
-Le document qui en résulte ( _avis d’imposition_) est important et est fréquemment utilisé comme justificatif dans d'autres démarches administratives.
+Le document qui en résulte (_avis d’imposition_) est important et est fréquemment utilisé comme justificatif dans d'autres démarches administratives.
 
 Ne pas déclarer peut compliquer des démarches futures, même si vous n'avez pas de revenus.
 

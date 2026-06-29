@@ -8,10 +8,10 @@ defaultContentLanguageInSubdir = true
 [languages]
   [languages.fr]
     title = "ALMA — Association Latino‑américaine d'Albi"
-    languageName = "Français"
+    label = "Français"
     weight = 1
 
   [languages.es]
     title = "ALMA — Asociación Latinoamericana de Albi"
-    languageName = "Español"
+    label = "Español"
     weight = 2

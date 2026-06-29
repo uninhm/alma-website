@@ -41,8 +41,8 @@ Los documentos más comúnmente aceptados son:
 
 - Factura de electricidad o gas (por ejemplo de [EDF](https://www.edf.fr/))
 - Factura de agua
-- Contrato de alquiler ( _bail_)
-- Recibo de alquiler ( _quittance de loyer_)
+- Contrato de alquiler (_bail_)
+- Recibo de alquiler (_quittance de loyer_)
 
 Si no tienes un alojamiento a tu nombre, puedes presentar una **attestation d’hébergement**. En ese caso, tendrás que aportar:
 
@@ -98,11 +98,11 @@ Es importante tener en cuenta que:
 
 En Francia, debes declarar tus ingresos cada año, incluso si son bajos o nulos.
 
-Si es tu **primera declaración**, normalmente tendrás que hacerla **en papel**, ya que todavía no dispones de número fiscal ( _numéro fiscal_).
+Si es tu **primera declaración**, normalmente tendrás que hacerla **en papel**, ya que todavía no dispones de número fiscal (_numéro fiscal_).
 
 El formulario se envía a tu centro de finanzas públicas. Tras esta primera declaración, la administración te asignará un número fiscal, que te permitirá hacer las siguientes declaraciones en línea en [impots.gouv](https://www.impots.gouv.fr/).
 
-El documento resultante ( _avis d’imposition_) es importante y se utiliza frecuentemente como justificante en otros trámites administrativos.
+El documento resultante (_avis d’imposition_) es importante y se utiliza frecuentemente como justificante en otros trámites administrativos.
 
 No declarar puede complicar gestiones futuras, incluso si no tienes ingresos.
 
