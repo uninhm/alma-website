@@ -25,7 +25,8 @@ body {
   margin: 0;
   background: linear-gradient(180deg, #fff 0%, #fbfbff 100%);
   color: #111;
-  line-height: 1.5
+  line-height: 1.5;
+  min-height: 100vh;
 }
 
 a {
@@ -262,6 +263,11 @@ footer {
 
   .mobile-menu {
     display: none;
+  }
+
+  .page-content {
+    max-width: 75%;
+    margin:auto;
   }
 }
 

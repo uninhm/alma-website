@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+<head>
+  {{ partial "head" }}
+</head>
+<body>
+  {{ partial "header" }}
+  <main class="container">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="eyebrow">{{ i18n "eyebrow" }}</div>
+        <h1 id="hero-title">{{ i18n "title_home_page" }}</h1>
+        <p class="lead">{{ i18n "lead" }}</p>
+
+        <div class="ctas" role="group">
+          <a class="btn btn-primary" href="#adhesion">{{ i18n "cta_join" }}</a>
+          <a class="btn btn-ghost" href="#evenements">{{ i18n "cta_events" }}</a>
+        </div>
+      </div>
+
+      <aside class="card">
+        <h3>{{ i18n "activities_title" }}</h3>
+        <ul class="small" style="padding-left:1rem">
+          <li>{{ i18n "act1" }}</li>
+          <li>{{ i18n "act2" }}</li>
+          <li>{{ i18n "act3" }}</li>
+          <li>{{ i18n "act4" }}</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section id="apropos">
+      <h2>{{ i18n "about_title" }}</h2>
+      <p class="small">{{ i18n "about_text" }}</p>
+    </section>
+
+    <section id="evenements">
+      <h2>{{ i18n "events_title" }}</h2>
+      <div class="card-grid">
+        <article class="card card-with-image-grid">
+          <div class="card-content">
+            <div class="card-body">
+              <h3>{{ i18n "permanence_title" }}</h3>
+              <p class="small">{{ i18n "permanence_description" }}</p>
+              <ul class="small">
+                <li>{{ i18n "permanence_item1" }}</li>
+                <li>{{ i18n "permanence_item2" }}</li>
+                <li>{{ i18n "permanence_item3" }}</li>
+                <li>{{ i18n "permanence_item4" }}</li>
+              </ul>
+              <p class="small">{{ i18n "permanence_date" | safeHTML }}</p>
+              <p class="small">{{ i18n "permanence_time" | safeHTML }}</p>
+              <p class="small">{{ i18n "permanence_location" | safeHTML }}</p>
+            </div>
+            <div class="card-image">
+              <img src="{{ .Site.BaseURL }}resources/foto_permanence.jpeg" alt="Permanence Hebdomadaire">
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="adhesion">
+      <h2>{{ i18n "membership_title" }}</h2>
+      <p class="small">{{ i18n "membership_text" }}</p>
+      <div style="margin-top:1rem" class="card-grid">
+        <div class="card">
+          <h3>{{ i18n "how_to_join_title" }}</h3>
+          <p class="small">{{ i18n "how_to_join_text" | safeHTML }}</p>
+        </div>
+        <div class="card">
+          <h3>{{ i18n "advantages_title" }}</h3>
+          <ul class="small">
+            <li>{{ i18n "advantage1" }}</li>
+            <li>{{ i18n "advantage2" }}</li>
+            <li>{{ i18n "advantage3" }}</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>{{ i18n "contact_title" }}</h2>
+
+      <div class="card">
+        <h3>{{ i18n "contact_general_title" }}</h3>
+        <p class="small">{{ i18n "contact_email" | safeHTML }}</p>
+        <p class="small">{{ i18n "contact_facebook" | safeHTML }}</p>
+        <p class="small">{{ i18n "contact_instagram" | safeHTML }}</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="small">© ALMA — {{ i18n "site_subtitle" }}</div>
+  </footer>
+</body>
+</html>
