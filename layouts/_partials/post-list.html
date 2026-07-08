@@ -3,10 +3,13 @@
     <div class="card">
       <h3>{{ .Title }}</h3>
       <div class="small"><p>{{ .Summary }}</p></div>
+      {{ if isset .Params "image" }}
+      <img src="{{ absURL .Params.image }}" style="max-width: 100%; margin-bottom: 1rem">
+      {{ end }}
       <a href="{{ .Permalink }}" class="btn btn-ghost" style="margin-top:auto">Lire plus</a>
     </div>
   {{ end }}
   <div class="card" style="justify-content: center; align-items: center; border: 2px dashed rgba(0,0,0,0.1); box-shadow: none; background: transparent; text-align: center; min-height: 200px;">
-    <p class="muted" data-i18n="more_articles_soon">Plus d'articles prochainement...</p>
+    <p class="muted" data-i18n="more_articles_soon">{{ i18n "plus_prochainement" }}</p>
   </div>
 </div>
