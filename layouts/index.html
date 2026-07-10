@@ -14,7 +14,7 @@
 
         <div class="ctas" role="group">
           <a class="btn btn-primary" href="#adhesion">{{ i18n "cta_join" }}</a>
-          <a class="btn btn-ghost" href="#evenements">{{ i18n "cta_events" }}</a>
+          <a class="btn btn-ghost" href="{{ absLangURL "/activites" }}">{{ i18n "cta_events" }}</a>
         </div>
       </div>
 
@@ -78,6 +78,33 @@
         </div>
       </div>
     </section>
+
+    {{ if isset .Site.Params "members" }}
+    <section id="bureau">
+      <h2>{{ i18n "board_members_title" }}</h2>
+      <div class="card-grid">
+        {{ range .Site.Params.members }}
+        <div class="card">
+          <img src="{{ absURL .image }}" alt="Photo de {{ .name }}" style="height: 150px; border-radius: 8px; object-fit: cover;">
+
+          <h3 style="height: 40px">{{ .name }}</h3>
+
+          {{ if isset . "position" }}
+          <p class="small">{{ .position }}</p>
+          {{ end }}
+
+          {{ if isset . "email" }}
+          <p class="small">{{ .email }}</p>
+          {{ end }}
+
+          {{ if isset . "phone" }}
+          <p class="small">{{ .phone }}</p>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
 
     <section id="contact">
       <h2>{{ i18n "contact_title" }}</h2>

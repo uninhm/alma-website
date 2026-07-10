@@ -2,11 +2,21 @@
   {{ range .RegularPages }}
     <div class="card">
       <h3>{{ .Title }}</h3>
+
+      {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+      {{ $dateHuman := .Date | time.Format ":date_long" }}
+      <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+
       <div class="small"><p>{{ .Summary }}</p></div>
-      <a href="{{ .Permalink }}" class="btn btn-ghost" style="margin-top:auto">Lire plus</a>
+
+      {{ if isset .Params "image" }}
+      <img src="{{ absURL .Params.image }}" style="max-width: 100%; margin-bottom: 1rem">
+      {{ end }}
+
+      <a href="{{ .Permalink }}" class="btn btn-ghost" style="margin-top:auto">{{ i18n "lire_plus" }}</a>
     </div>
   {{ end }}
   <div class="card" style="justify-content: center; align-items: center; border: 2px dashed rgba(0,0,0,0.1); box-shadow: none; background: transparent; text-align: center; min-height: 200px;">
-    <p class="muted" data-i18n="more_articles_soon">Plus d'articles prochainement...</p>
+    <p class="muted" data-i18n="more_articles_soon">{{ i18n "plus_prochainement" }}</p>
   </div>
 </div>
