@@ -2,14 +2,45 @@ title = "ALMA — Association Latino‑américaine d'Albi"
 defaultContentLanguage = "fr"
 defaultContentLanguageInSubdir = true
 
-[params]
-  description = "ALMA (Association Latino‑aMéricaine d'Albi) — événements, cours, rencontres et échanges culturels à Albi."
-
 [languages]
   [languages.fr]
     title = "ALMA — Association Latino‑américaine d'Albi"
     weight = 1
 
+    [[languages.fr.params.members]]
+    name = "Unai Hernandez Minaberry"
+    position = "Président"
+    image = "/resources/unai.jpg"
+
+    [[languages.fr.params.members]]
+    name = "Valentina Rosas"
+    position = "Vice-présidente"
+
+    [[languages.fr.params.members]]
+    name = "María Irela Hernandez"
+    position = "Secrétaire"
+
+    [[languages.fr.params.members]]
+    name = "Melanie Rodriguez Rojas"
+    position = "Trésorière"
+
   [languages.es]
     title = "ALMA — Asociación Latinoamericana de Albi"
     weight = 2
+
+    [[languages.es.params.members]]
+    name = "Unai Hernandez Minaberry"
+    position = "Presidente"
+    image = "/resources/unai.jpg"
+
+    [[languages.es.params.members]]
+    name = "Valentina Rosas"
+    position = "Vicepresidenta"
+
+    [[languages.es.params.members]]
+    name = "María Irela Hernandez"
+    position = "Secretaria"
+
+    [[languages.es.params.members]]
+    name = "Melanie Rodriguez Rojas"
+    position = "Tesorera"
