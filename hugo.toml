@@ -17,7 +17,7 @@ defaultContentLanguageInSubdir = true
     position = "Vice-présidente"
 
     [[languages.fr.params.members]]
-    name = "María Irela Hernandez"
+    name = "Maria Irela Hernandez"
     position = "Secrétaire"
 
     [[languages.fr.params.members]]
@@ -29,7 +29,7 @@ defaultContentLanguageInSubdir = true
     weight = 2
 
     [[languages.es.params.members]]
-    name = "Unai Hernandez Minaberry"
+    name = "Unai Hernández Minaberry"
     position = "Presidente"
     image = "/resources/unai.jpg"
 
@@ -38,9 +38,9 @@ defaultContentLanguageInSubdir = true
     position = "Vicepresidenta"
 
     [[languages.es.params.members]]
-    name = "María Irela Hernandez"
+    name = "María Irela Hernández"
     position = "Secretaria"
 
     [[languages.es.params.members]]
-    name = "Melanie Rodriguez Rojas"
+    name = "Melanie Rodríguez Rojas"
     position = "Tesorera"
